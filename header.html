@@ -1,0 +1,122 @@
+<div class="menu-container" id="root-top-block">
+    <div class="main-background">
+        <div id="top-block" class="limit-block flex-block flex-between flex-row flex-middle" style="border-bottom: 1px solid rgba(128, 128, 128, 0.432);">
+            <p style="text-align: left; color: black; font-size: 18px; padding-left: 60px; padding-right: 60px; padding-top: 30px; padding-bottom: 30px;">
+                help@shkolnoe-dvizenie.ru<br>+7 (903) 949 55 41<br>+7 (923) 00 483 02
+            </p>
+            <p style="color: black; font-size: 18px; padding-left: 60px; padding-right: 60px; padding-top: 30px; padding-bottom: 30px;">
+                <a href="registration.php" class="bright-button">Принять участие!</a>
+            </p>
+        </div>
+    </div>
+    <div class="limit-block flex-block flex-row flex-middle flex-between">
+        <a href="index.php" style="display: inline-block;">
+            <div class="logo">
+                <h2>Школьное движение</h2>
+                <p>Всероссийский конкурс</p>
+            </div>
+        </a>
+        <ul class="center-flex-block">
+            <li><a href="index.php" class="menu-item">Главная</a></li>
+            <li><a href="about.php" class="menu-item">О проекте</a></li>
+            <li>
+                <a href="about.php" class="menu-item slide-down">Информация</a>
+                <div id="slide-down-menu">
+                    <div class="flex-block flex-center flex-row flex-top flex-nowrap">
+                        <ul>
+                            <li><a class="second-menu-item" href="about.php">О конкурсе</a></li>
+                            <li><a class="second-menu-item" href="howstart.php">Как принять участие</a></li>
+                            <li><a class="second-menu-item" href="news.php">Новости</a></li>
+                            <li><a class="second-menu-item" href="comments.php">Отзывы</a></li>
+                            <li><a class="second-menu-item" href="contacts.php">Контакты</a></li>
+                        </ul>
+                        <ul>
+                            <li><a class="second-menu-item" href="rules.php">Правила участия</a></li>
+                            <li><a class="second-menu-item" href=statements.php "">Общие положения</a></li>
+                            <li><a class="second-menu-item" href="criteria.php">Критерии</a></li>
+                            <li><a class="second-menu-item" href="regulations.php">Регламент проведения</a></li>
+                            <li><a class="second-menu-item" href="prizes.php">Призы и подарки</a></li>
+                        </ul>
+                        <ul>
+                            <li><a class="second-menu-item" href="details.php">Реквизиты</a></li>
+                            <li><a class="second-menu-item" href="contract.php">Договор оферта</a></li>
+                            <li><a class="second-menu-item" href="paymentreceipt.php">Оплата</a></li>
+                            <li><a class="second-menu-item" href="trial.php">Пробные задания</a></li>
+                            <li><a class="second-menu-item" href="subscribe.php">Подписка</a></li>
+                        </ul>
+                        <ul>
+                            <li><a class="second-menu-item" href="premiummaterials.php">Наградные материалы</a></li>
+                            <li><a class="second-menu-item" href="login.php">Личный кабинет</a></li>
+                            <li><a class="second-menu-item" href="jury.php">Жюри конкурса</a></li>
+                            <li><a class="second-menu-item" href="archive.php">Архив</a></li>
+                            <li><a class="second-menu-item" href="faq.php">Частые вопросы</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li><a href="contacts.php" class="menu-item">Контакты</a></li>
+            <li><a href="login.php" class="menu-item">Личный кабинет</a></li>
+        </ul>
+        
+    </div>
+    <script type="text/javascript">
+        var topBlock;
+        var root;
+
+        function updateTopBlock() {
+            var scroll = window.pageYOffset || document.documentElement.scrollTop;
+            var height = topBlock.offsetHeight;
+            var top = Math.min(scroll, height);
+            root.style.marginTop =  - top + "px";
+            if (top == height) {
+                root.style.boxShadow = "0 2px 8px rgba(50, 50, 50, 0.1)";
+            }
+            else {
+                root.style.boxShadow = "none";
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            topBlock = document.getElementById("top-block");
+            root = document.getElementById("root-top-block");
+            window.addEventListener('scroll', function() {
+                updateTopBlock();
+            });
+
+            updateTopBlock();
+
+            //Меню
+            var menu = document.getElementById("slide-down-menu");
+            var opened = false;
+            function OpenMenu(elem){
+                opened = true;
+                $(elem).next().show(0);
+                $(elem).addClass("opened");
+            }
+
+            function CloseMenu(elem){
+                opened = false;
+                $(elem).next().hide(0);
+                $(elem).removeClass("opened");
+            }
+
+            $('.menu-item.slide-down').click(function(e){
+                e.preventDefault();
+                if (opened){
+                    CloseMenu(this);
+                }
+                else {
+                    OpenMenu(this);
+                }
+            });
+
+            $(menu).parent().click(false, function(e){
+                event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+            });
+
+            $("body").click(false, function(){
+                CloseMenu($(menu).parent().find(".slide-down"));
+            });
+        });
+    </script>
+</div>
