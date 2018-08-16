@@ -16,7 +16,9 @@ class Tasks
             $files = scandir( ROOT . self::TASKS_DIR . "/$eng" );
             foreach ( $files as $file ) {
                 if ($file == "." or $file == "..") continue;
-                $class[] = $this->findInt($file);
+                if (($classNumber = $this->findInt($file)) != 0) {
+                    $class[] = $this->findInt($file);
+                }
             }
             sort($class);
             $this->tasks[] = array(
@@ -31,9 +33,11 @@ class Tasks
         return $this->tasks;
     }
 
-    public function hasTask($category, $class) {
+    public function hasTask($category, $class = false) {
         foreach ($this->tasks as $task) {
-            if ($task['eng'] == $category and in_array($class, $task['class'])) return true;
+            if ($task['eng'] == $category and ($class === false or in_array($class, $task['class']))) {
+                return true;
+            }
         }
         return false;
     }

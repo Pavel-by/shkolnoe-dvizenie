@@ -412,7 +412,7 @@ if (!$rez or !($rez = mysqli_fetch_array($rez))){
     exit();
 }
 $id = $rez['id'];
-
+@mkdir($_SERVER['DOCUMENT_ROOT'] . "/temp");
 $zipName = $_SERVER['DOCUMENT_ROOT'] . "/temp/Zadaniya_$id.zip";
 $zip = new ZipArchive();
 if ($zip->open($zipName, ZIPARCHIVE::CREATE) !== TRUE){
@@ -424,9 +424,11 @@ $competitions = json_decode($rez['classes'], true);
 foreach ($competitions as $eng=>$rus){
     $filesDir = $filesFolder . $eng;
     $zipDir = $rus;
+    //echo "each $filesDir<br>";
     foreach (scandir($filesDir) as $file) {
         if ($file == "." or $file == "..") continue;
         $zip->addFile($filesDir . "/" . $file, $zipDir . "/" . $file);
+        //echo "Added " .$filesDir . "/" . $file . "<br>";
     }
 }
 $zip->close();

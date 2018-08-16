@@ -72,11 +72,10 @@
     
     //Номера классов
     $competitions = array();
-    if (isset($_GET['competitions'])) {
-        $competitions = json_decode($_GET['competitions'], true);
+    if ( isset( $_GET[ 'competitions' ] ) ) {
+        $competitions = json_decode( $_GET[ 'competitions' ], true );
     }
-    $competitions = CF::ValidateCompetitions($competitions);
-    $classes = json_encode($competitions, JSON_UNESCAPED_UNICODE);
+    $classes      = json_encode( $competitions, JSON_UNESCAPED_UNICODE );
     
     //Телефон
     $phone = mysqli_real_escape_string(

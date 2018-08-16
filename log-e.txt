@@ -890,3 +890,4 @@
 2018-03-29 12:05:31: ERROR: INSERT INTO `results`(`forId`,`name`,`competition`,`class`,`points`,`rating`,`place`) VALUES(59, 'Рябенькая Дарья', 'Знаток','9','15','100','1'))
 2018-03-29 12:05:31: ERROR: INSERT INTO `results`(`forId`,`name`,`competition`,`class`,`points`,`rating`,`place`) VALUES(59, 'Саулин Семен', 'Знаток','7','13','86','3'))
 2018-03-29 12:05:31: ERROR: INSERT INTO `results`(`forId`,`name`,`competition`,`class`,`points`,`rating`,`place`) VALUES(59, 'Гума Никита ', 'Знаток','7','14','94',''))
+2018-07-21 16:23:37: ERROR: SQL: 

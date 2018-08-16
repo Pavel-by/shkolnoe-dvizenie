@@ -6,6 +6,7 @@ error_reporting( E_ALL );
 @session_start();
 include( $_SERVER[ 'DOCUMENT_ROOT' ] . '/system/db.php' );
 include( $_SERVER[ 'DOCUMENT_ROOT' ] . '/scripts/error-script.php' );
+include($_SERVER['DOCUMENT_ROOT'] . "/scripts/break-script.php");
 require_once "common-functions.php";
 
 if ( $link ) {
@@ -93,6 +94,27 @@ if ( $link ) {
             validateString( $_GET[ 'school' ], $min, $max, "Неверно введено название школы." )
         );
 
+        if (isset($_GET['post']) && $_GET['post'] == 'Yes') {
+            $post = "1";
+            $postaddress = mysqli_real_escape_string(
+                $link,
+                validateString($_GET['postaddress'], $min, 100, "Неверно введен почтовый адрес.")
+            );
+            $postname = mysqli_real_escape_string(
+                $link,
+                validateString($_GET['postname'], 0, $max, "Неверно введено имя получателя: длина строки не может превышать 100 символов.")
+            );
+            $postcode = mysqli_real_escape_string(
+                $link,
+                validateString($_GET['postcode'], 6, 6, "Неверно введен почтовый индекс.")
+            );
+        } else {
+            $post = "0";
+            $postaddress = "";
+            $postname = "";
+            $postcode = "";
+        }
+
         //Учителя
         $teachers = mysqli_real_escape_string(
             $link,
@@ -157,7 +179,7 @@ if ( $link ) {
                     $arr[ 'error' ]     = true;
                     $arr[ 'texterror' ] = "Пользователь с таким E-mail уже зарегистрирован!";
                 } else {
-                    $rez = mysqli_query( $link, "UPDATE `users` SET `name`='$name',`region`='$region',`city`='$city',`school`='$school',`postcode`='$postcode',`classes`='$classes',`email`='$email',`phone`='$phone' WHERE `userkey`='$userkey'" );
+                    $rez = mysqli_query( $link, "UPDATE `users` SET `name`='$name',`region`='$region',`city`='$city',`school`='$school',`postcode`='$postcode',`classes`='$classes',`email`='$email',`phone`='$phone',`post`=$post,`postaddress`='$postaddress',`postcode`='$postcode',`postname`='$postname',`teachers`='$teachers',`participants`='$participants' WHERE `userkey`='$userkey'" );
                     if ( !$rez ) {
                         $arr[ 'error' ] = true;
                         log::e( mysqli_error( $link ) );

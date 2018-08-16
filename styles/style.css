@@ -399,9 +399,9 @@ div.logo p {
   margin: 0px;
   padding: 15px;
   font-size: 13px;
-  transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -webkit-transition: all .2s ease;
+  transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
   text-align: left;
   display: block;
   text-decoration: none;
@@ -421,9 +421,9 @@ div.logo p {
   font-size: 15px;
   color: #3b3b3b;
   text-align: center;
-  transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -webkit-transition: all .2s ease;
+  transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
   outline: none;
   text-decoration: none;
   font-weight: 400;
@@ -442,9 +442,9 @@ div.logo p {
   background-image: url("/images/arrow-down-white.png");
   background-size: 100%;
   background-position: center;
-  transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -webkit-transition: all .2s linear;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
 }
 .menu-item.slide-down.opened::after {
   transform: translate(-50%, -50%) rotate(180deg);
@@ -483,9 +483,9 @@ div.logo p {
   transform: translate(-50%, 1px);
   z-index: 3;
   background-color: #FFFFFF;
-  transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -webkit-transition: all .2s linear;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
   clip-path: polygon(7px 0%, calc(100% - 7px) 0%, 100% 100%, 0 100%);
   padding-left: 10px;
   padding-right: 10px;
@@ -497,9 +497,9 @@ div.logo p {
   margin: 9px;
   border-radius: 100%;
   border: 1px solid #AAAAAA;
-  transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -webkit-transition: all .2s linear;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
   vertical-align: middle;
 }
 .choose-slide-image-button:hover {
@@ -619,9 +619,9 @@ div.logo p {
   font-weight: 400;
   white-space: nowrap;
   background-image: linear-gradient(150deg, #fcb11d, #d89102);
-  transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -webkit-transition: all .2s linear;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
 }
 .bright-button:hover {
   cursor: pointer;
@@ -712,9 +712,9 @@ div.logo p {
   display: inline-block;
   color: #313131;
   font-size: 15px;
-  transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -webkit-transition: all .2s linear;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
   text-decoration: none;
   white-space: nowrap;
   font-weight: 400;
@@ -973,9 +973,9 @@ a.download:hover {
   padding: 10px;
   margin: 10px;
   width: calc(100% - 20px);
-  transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -webkit-transition: all .2s linear;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
 }
 .button-choose:hover {
   color: #2e2e2e;
@@ -1269,12 +1269,14 @@ divider {
   border-color: #cccccc;
 }
 .task-picker-competition {
-  display: block;
   margin: 5px;
   border-radius: 3px;
   background-color: white;
   border: 1px solid #f0f0f0;
   cursor: pointer;
+}
+.task-picker-competition > span {
+  padding: 5px;
 }
 .task-picker-competition.chosen {
   background-color: rgba(120, 210, 255, 0.19);

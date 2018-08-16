@@ -157,6 +157,20 @@
             document.getElementById("choose-competitions").addEventListener('click', function () {
                 taskPicker.show();
             });
+
+            $("#openMailCriteria").click(function () {
+                var text = "<ol>\n    <li><p>\n        Бумажные Сертификаты участникам, Благодарности учителям за организацию, Благодарственное письмо в адрес\n        школы,\n        Дипломы I, II, III мест, Благодарности учителям за подготовку Победителя (ученика) высылаются почтой России при\n        количестве участников не менее 30-ти (одним почтовым отправлением, сразу же после подведения результатов по\n        данной\n        школе), бланки ответов почтой России не высылаются, а скачиваются электронно вместе с заданиями\n    </p></li>\n\n    <li><p>\n        Бумажные бланки ответов, Сертификаты участникам и Благодарности учителям за организацию\n        высылаются почтой России при количестве участников не менее 80-ти, сразу же после оплаты Конкурса (олимпиад) - в\n        первый раз (также можно и самостоятельно скачать электронные бланки ответов по желанию, чтобы не ждать почту\n        России)\n        Дипломы I, II, III мест,\n        Благодарности учителям за подготовку Победителя (ученика),\n        Благодарственное письмо в адрес школы\n        высылаются почтой России, сразу же после подведения результатов по данной школе - во второй раз\n    </p></li>\n</ol>";
+                Message.create({header: "Условия отправки писем через почту России", text: text});
+            });
+
+            document.getElementById("need-post").addEventListener('change', function () {
+                if (this.checked) {
+                    $("#post-block").css("display", "block");
+                }
+                else {
+                    $("#post-block").css("display", "none");
+                }
+            });
         });
     </script>
 </head>
@@ -239,6 +253,36 @@
                 <div>
                     <input type="password" name="password" class="text-input">
                     <span class="input-error"></span>
+                </div>
+
+                <divider></divider>
+
+                <label class="flex-block flex-row flex-left flex-middle">
+                    <input type="checkbox" name="post" value="post"
+                           id="need-post" style="margin: 10px;">
+                    <p>Я хочу получать резутьтаты по почте в бумажном формате</p>
+                </label>
+                <div id="post-block" style="display: none;">
+                    <p class="important-text">Условия отправки бланков по почте России<br><input type="button"
+                                                                                                 class="submit-button"
+                                                                                                 value="Читать"
+                                                                                                 id="openMailCriteria"
+                                                                                                 style="margin-left: 0;">
+                    </p>
+                    <p class="bold">Почтовый индекс</p>
+                    <div>
+                        <input type="text" name="postcode" class="text-input">
+                    </div>
+
+                    <p class="bold">Полный почтовый адрес</p>
+                    <div>
+                        <input type="text" name="postaddress" class="text-input">
+                    </div>
+
+                    <p class="bold">Имя получателя</p>
+                    <div>
+                        <input type="text" name="postname" class="text-input">
+                    </div>
                 </div>
                 <span class="input-error" id="form-error">Присутствуют ошибки при заполнении полей</span>
                 <input type="submit" class="submit-button" value="Зарегистрироваться">
