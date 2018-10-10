@@ -42,9 +42,6 @@ include( "scripts/check-admin-permissions.php" )
                 $.each(data.classes, function (english, russian) {
                     text += "<tr><td colspan='2' style='text-align: center;'>" + russian + "</td></tr>";
                 });
-                /*$.each($.parseJSON(data.classes), function(i, val){
-                 text += getTableSt(getCompetitionName(i), val);
-                 });*/
                 if (data.usertype == 1) {
                     text += getTableSt("Статус аккаунта", "<span class='green'>Доступ открыт</span>");
                 }
