@@ -1,6 +1,7 @@
 <?php
     include('scripts/check-autorization.php');
     include('scripts/update-userinfo.php');
+    include('system/constants.php');
     require_once 'scripts/error-script.php';
 ?>
     <!DOCTYPE html>
@@ -28,7 +29,7 @@
                             <div>
                                 <h1 class="page-title">Скачать задания</h1>
                                 <?php
-                                    if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 1){
+                                    if (constants::PAYMENT_FOR_DOWNLOAD and (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 1)){
                                         echo "<p class='important-text'>Прежде чем скачать задания, Вам необходимо <a href='user-payment.php'>загрузить</a> квитанцию об оплате. Она будет проверена в ручном режиме и в течение суток Вам откроют доступ к данному разделу.</p>";
                                     }
                                     else {

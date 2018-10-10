@@ -23,25 +23,6 @@ include( "scripts/check-admin-permissions.php" )
             return text;
         }
 
-        function getCompetitionName(s = "") {
-            switch (s) {
-                case "arithmetic":
-                    return "Арифметика";
-                case "puzzle":
-                    return "Головоломка";
-                case "math":
-                    return "Математика";
-                case "rebus":
-                    return "Ребус";
-                case "scholar":
-                    return "Грамотей";
-                case "russian":
-                    return "Русский язык";
-                default:
-                    return "";
-            }
-        }
-
         function updateInfo(data) {
             var text;
             if (data == false) {
@@ -58,8 +39,8 @@ include( "scripts/check-admin-permissions.php" )
                 text += getTableSt("Телефон", data.phone);
                 text += getTableSt("&nbsp;", "");
                 text += "<tr><td colspan='2' class='bold' style='text-align: center;'>Запрошенные классы</td></tr>";
-                data.classes.forEach(function (val) {
-                    text += getTableSt(val[1], val[2].join(",&nbsp;"));
+                $.each(data.classes, function (english, russian) {
+                    text += "<tr><td colspan='2' style='text-align: center;'>" + russian + "</td></tr>";
                 });
                 /*$.each($.parseJSON(data.classes), function(i, val){
                  text += getTableSt(getCompetitionName(i), val);

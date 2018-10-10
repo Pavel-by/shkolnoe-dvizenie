@@ -82,7 +82,7 @@
                             </div>
                             <div class="download">
                                 <img src="images/download.png">
-                                <a href="files/prikaz.rar">Скачать приказ о проведении</a>
+                                <a href="files/prikaz.docx">Скачать приказ о проведении</a>
                             </div>
                             <div class="download">
                                 <img src="images/download.png">
